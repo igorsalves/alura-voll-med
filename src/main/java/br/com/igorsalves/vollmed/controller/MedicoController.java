@@ -1,5 +1,7 @@
 package br.com.igorsalves.vollmed.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +23,7 @@ public class MedicoController {
   
   @PostMapping
   @Transactional
-  public ResponseEntity<MedicoEntity> cadastrar(@RequestBody DadosCadastroMedico dados) {
+  public ResponseEntity<MedicoEntity> cadastrar(@RequestBody @Valid DadosCadastroMedico dados) {
     var medico = medicoRepository.save(new MedicoEntity(dados));
 
     return ResponseEntity.status(HttpStatus.CREATED).body(medico) ;
