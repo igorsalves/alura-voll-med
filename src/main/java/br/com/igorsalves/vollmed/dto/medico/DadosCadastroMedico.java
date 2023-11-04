@@ -20,6 +20,9 @@ public class DadosCadastroMedico {
   private String email;
 
   @NotBlank
+  private String telefone;
+
+  @NotBlank
   @Pattern(regexp = "\\d{4,6}")
   private String crm;
 

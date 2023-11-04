@@ -19,6 +19,7 @@ public class MedicoEntity {
 
   private String nome;
   private String email;
+  private String telefone;
   private String crm;
 
   @Enumerated(EnumType.STRING)
@@ -30,6 +31,7 @@ public class MedicoEntity {
   public MedicoEntity(DadosCadastroMedico dados) {
     nome = dados.getNome();
     email = dados.getEmail();
+    telefone = dados.getTelefone();
     crm = dados.getCrm();
     especialidade = dados.getEspecialidade();
     endereco = new EnderecoEntity(dados.getEndereco());
