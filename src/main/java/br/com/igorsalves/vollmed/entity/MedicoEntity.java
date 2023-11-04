@@ -2,6 +2,7 @@ package br.com.igorsalves.vollmed.entity;
 
 import javax.persistence.*;
 
+import br.com.igorsalves.vollmed.dto.medico.DadosCadastroMedico;
 import br.com.igorsalves.vollmed.dto.medico.Especialidade;
 import lombok.*;
 
@@ -25,4 +26,12 @@ public class MedicoEntity {
 
   @Embedded
   private EnderecoEntity endereco;
+
+  public MedicoEntity(DadosCadastroMedico dados) {
+    nome = dados.getNome();
+    email = dados.getEmail();
+    crm = dados.getCrm();
+    especialidade = dados.getEspecialidade();
+    endereco = new EnderecoEntity(dados.getEndereco());
+  }
 }
