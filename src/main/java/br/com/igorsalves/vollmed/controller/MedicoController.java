@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,8 +38,8 @@ public class MedicoController {
   }
 
   @GetMapping
-  public ResponseEntity<List<DadosListagemMedico>> listar() {
-    var medicos = medicoRepository.findAll().stream().map(DadosListagemMedico::new).collect(Collectors.toList());
+  public ResponseEntity<Page<DadosListagemMedico>> listar(Pageable pageable) {
+    var medicos = medicoRepository.findAll(pageable).map(DadosListagemMedico::new);
 
     return ResponseEntity.status(HttpStatus.OK).body(medicos);
   }
